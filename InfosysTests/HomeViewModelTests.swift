@@ -26,6 +26,7 @@ final class HomeViewModelTests: XCTestCase {
 
     func testDataFeedFetchSuccess() {
         let mockHomeServiceProvider = MockHomeServiceProvider()
+
         let viewModel = HomeViewModel(service: mockHomeServiceProvider)
         viewModel.delegate = mockService
 
@@ -59,6 +60,8 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertNil(viewModel.screenTitle)
         XCTAssertEqual(viewModel.cellViewModels.count, 0)
         XCTAssertTrue(mockService.didFailCalled)
+        XCTAssertEqual(viewModel.errorModel?.errorCode, 0)
+        XCTAssertEqual(viewModel.errorModel?.description, "<Error Model>")
     }
 
 }

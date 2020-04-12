@@ -16,16 +16,18 @@ class HomeViewController: UIViewController, ViewModelInjectable {
             viewModel.delegate = self
         }
     }
+
     weak var coordinator: HomeCoordinator!
 
     private lazy var tableView =  UITableView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
 
+        view.backgroundColor = .white
         assertDependencies()
-        setUpViews()
+
+        setUpTableView()
 
         viewModel.fetchData()
     }
@@ -37,7 +39,7 @@ private extension HomeViewController {
         static let cellID = "cellID"
     }
 
-    private func setUpViews() {
+    private func setUpTableView() {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -79,6 +81,10 @@ extension HomeViewController: HomeServiceDelegate {
     }
 
     func didFail(_ viewModel: HomeViewModel) {
-
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "Something went wrong!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

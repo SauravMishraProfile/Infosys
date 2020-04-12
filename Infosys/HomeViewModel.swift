@@ -39,6 +39,7 @@ final class HomeViewModel {
     private let service: HomeServiceProvider
     private(set) var cellViewModels: [HomeCellViewModel] = []
     private(set) var screenTitle: String?
+    private(set) var errorModel: DefaultErrorModel?
 
     init(service: HomeServiceProvider = HomeService()) {
         self.service = service
@@ -51,7 +52,7 @@ final class HomeViewModel {
                 self?.processSuccessResponse(model: dataFeed)
                 self?.state = .success
             case .failure(let error):
-                self?.processFailureResponse(errorModel: error)
+                self?.processFailureResponse(error: error)
                 self?.state = .failure
             }
         }
@@ -62,8 +63,8 @@ final class HomeViewModel {
         cellViewModels = model.rows.compactMap { HomeCellViewModel(imageURLString: $0.imageHref, title: $0.title, description: $0.description) }
     }
 
-    private func processFailureResponse(errorModel: Codable) {
-
+    private func processFailureResponse(error: Codable) {
+        errorModel = error as? DefaultErrorModel
     }
 
 }
