@@ -171,9 +171,16 @@
 			isa = PBXGroup;
 			children = (
 				1515B5E02442BF4D0093D90B /* HomeService.swift */,
-				1515B5E22442BF830093D90B /* DataFeed.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		1515B5F924437A390093D90B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1515B5E22442BF830093D90B /* DataFeed.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1558866E24413E0600A8ECEB = {
@@ -203,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				1515B5EC244353250093D90B /* App */,
+				1515B5F924437A390093D90B /* Model */,
 				1515B5ED244353500093D90B /* Views */,
 				1515B5EE2443535B0093D90B /* ViewModels */,
 				1515B5F2244353CE0093D90B /* Service */,
