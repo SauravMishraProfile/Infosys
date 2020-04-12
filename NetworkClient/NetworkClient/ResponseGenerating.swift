@@ -31,6 +31,7 @@ extension ResponseGenerating {
 
     func decode<T: Codable, U: Codable>(successDecodingType: T.Type, errorDecodingType: U.Type, data: Data?, response: URLResponse?, error: Error?) -> Response<T> {
         guard let responseData = data,
+        Reachability.isInternetAvailable(),
             error == nil else {
                 let errorModel = DefaultErrorModel(errorCode: 0, description: "Error Returned")
                 return .failure(errorModel)

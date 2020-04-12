@@ -10,6 +10,7 @@
 		1515B5D92441FA100093D90B /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5D82441FA100093D90B /* RequestBuilderTests.swift */; };
 		1515B5DD24420D9A0093D90B /* ResponseGeneratingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5DC24420D9A0093D90B /* ResponseGeneratingTests.swift */; };
 		1515B5DF244215BD0093D90B /* RequestPerformingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5DE244215BD0093D90B /* RequestPerformingTests.swift */; };
+		1515B5F82443673A0093D90B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5F72443673A0093D90B /* Reachability.swift */; };
 		19B025C5226C54DF00166F93 /* NetworkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 19D5020D2223EED000ED1F42 /* NetworkClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		19B025C7226C54DF00166F93 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D502262223EF4E00ED1F42 /* RequestBuilder.swift */; };
 		19B025C8226C54DF00166F93 /* RequestPerforming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D502252223EF4E00ED1F42 /* RequestPerforming.swift */; };
@@ -40,6 +41,7 @@
 		1515B5DA2441FDD40093D90B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1515B5DC24420D9A0093D90B /* ResponseGeneratingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGeneratingTests.swift; sourceTree = "<group>"; };
 		1515B5DE244215BD0093D90B /* RequestPerformingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPerformingTests.swift; sourceTree = "<group>"; };
+		1515B5F72443673A0093D90B /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		19B025D7226C54DF00166F93 /* NetworkClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19D5020A2223EED000ED1F42 /* NetworkClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19D5020D2223EED000ED1F42 /* NetworkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkClient.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				19D502292223EF4E00ED1F42 /* ResponseGenerating.swift */,
 				19D5020D2223EED000ED1F42 /* NetworkClient.h */,
 				19D5020E2223EED000ED1F42 /* Info.plist */,
+				1515B5F72443673A0093D90B /* Reachability.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			files = (
 				19D5022C2223EF4E00ED1F42 /* RequestBuilder.swift in Sources */,
 				19D5022B2223EF4E00ED1F42 /* RequestPerforming.swift in Sources */,
+				1515B5F82443673A0093D90B /* Reachability.swift in Sources */,
 				19D5022F2223EF4E00ED1F42 /* ResponseGenerating.swift in Sources */,
 				19D5022D2223EF4E00ED1F42 /* RequestConfiguring.swift in Sources */,
 				19D5022E2223EF4E00ED1F42 /* ResponseConfiguring.swift in Sources */,
