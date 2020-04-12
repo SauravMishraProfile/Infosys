@@ -64,6 +64,12 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.errorModel?.description, "<Error Model>")
     }
 
+    func testErrorMessages() {
+        XCTAssertEqual(HomeViewModel.ErrorState.message, "Something went wrong!")
+        XCTAssertEqual(HomeViewModel.ErrorState.title, "Error")
+        XCTAssertEqual(HomeViewModel.ErrorState.done, "OK")
+    }
+
 }
 
 private final class MockHomeServiceProvider: HomeServiceProvider {

@@ -28,7 +28,7 @@
 		155886A72441599700A8ECEB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A62441599700A8ECEB /* Coordinator.swift */; };
 		155886A9244159B300A8ECEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A8244159B300A8ECEB /* HomeCoordinator.swift */; };
 		155886AB244159CE00A8ECEB /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AA244159CE00A8ECEB /* HomeRouter.swift */; };
-		155886AD24415A2400A8ECEB /* ViewController+Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */; };
+		155886AD24415A2400A8ECEB /* UIViewController+Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AC24415A2400A8ECEB /* UIViewController+Namespace.swift */; };
 		155886AF24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */; };
 		155886B124415AE000A8ECEB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886B024415AE000A8ECEB /* HomeViewModel.swift */; };
 		90968BDEBCDDA459E5000F68 /* Pods_Infosys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB7423C94DA2E8C809DC279 /* Pods_Infosys.framework */; };
@@ -66,13 +66,13 @@
 		1515B5E6244318C00093D90B /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		1515B5E824433A4F0093D90B /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		1515B5EA2443420A0093D90B /* HomeCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModelTests.swift; sourceTree = "<group>"; };
+		1515B5F5244354640093D90B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Infosys/Info.plist; sourceTree = "<group>"; };
 		1558867724413E0600A8ECEB /* Infosys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infosys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1558867A24413E0600A8ECEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1558867C24413E0600A8ECEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1558867E24413E0600A8ECEB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1558868324413E0700A8ECEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1558868624413E0700A8ECEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1558868824413E0700A8ECEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1558868D24413E0800A8ECEB /* InfosysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfosysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1558869324413E0800A8ECEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1558869C24413E2C00A8ECEB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		155886A62441599700A8ECEB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		155886A8244159B300A8ECEB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		155886AA244159CE00A8ECEB /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Namespace.swift"; sourceTree = "<group>"; };
+		155886AC24415A2400A8ECEB /* UIViewController+Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Namespace.swift"; sourceTree = "<group>"; };
 		155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ViewModelInjectable.swift"; sourceTree = "<group>"; };
 		155886B024415AE000A8ECEB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2B896BE7350B97E82B03FF2D /* Pods-Infosys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infosys.release.xcconfig"; path = "Target Support Files/Pods-Infosys/Pods-Infosys.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,10 +111,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1515B5EC244353250093D90B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1558867A24413E0600A8ECEB /* AppDelegate.swift */,
+				1558867C24413E0600A8ECEB /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1515B5ED244353500093D90B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1558867E24413E0600A8ECEB /* HomeViewController.swift */,
+				1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1515B5EE2443535B0093D90B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				155886B024415AE000A8ECEB /* HomeViewModel.swift */,
+				1515B5E6244318C00093D90B /* HomeCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1515B5EF244353690093D90B /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				1558869C24413E2C00A8ECEB /* AppCoordinator.swift */,
+				155886A62441599700A8ECEB /* Coordinator.swift */,
+				155886A8244159B300A8ECEB /* HomeCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		1515B5F02443537A0093D90B /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				155886AA244159CE00A8ECEB /* HomeRouter.swift */,
+				155886A42441597F00A8ECEB /* AppRouter.swift */,
+				155886A22441596800A8ECEB /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		1515B5F12443539A0093D90B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				155886AC24415A2400A8ECEB /* UIViewController+Namespace.swift */,
+				155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		1515B5F2244353CE0093D90B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1515B5E02442BF4D0093D90B /* HomeService.swift */,
+				1515B5E22442BF830093D90B /* DataFeed.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1558866E24413E0600A8ECEB = {
 			isa = PBXGroup;
 			children = (
 				1558867924413E0600A8ECEB /* Infosys */,
+				1515B5F5244354640093D90B /* Info.plist */,
+				1558868524413E0700A8ECEB /* LaunchScreen.storyboard */,
+				1558868324413E0700A8ECEB /* Assets.xcassets */,
 				1558869024413E0800A8ECEB /* InfosysTests */,
 				1558867824413E0600A8ECEB /* Products */,
 				27AD5978111DF0053D30B2B5 /* Pods */,
@@ -134,25 +202,13 @@
 		1558867924413E0600A8ECEB /* Infosys */ = {
 			isa = PBXGroup;
 			children = (
-				1558867A24413E0600A8ECEB /* AppDelegate.swift */,
-				1558867C24413E0600A8ECEB /* SceneDelegate.swift */,
-				1558867E24413E0600A8ECEB /* HomeViewController.swift */,
-				155886B024415AE000A8ECEB /* HomeViewModel.swift */,
-				1515B5E6244318C00093D90B /* HomeCellViewModel.swift */,
-				1515B5E02442BF4D0093D90B /* HomeService.swift */,
-				1515B5E22442BF830093D90B /* DataFeed.swift */,
-				1558868324413E0700A8ECEB /* Assets.xcassets */,
-				1558868524413E0700A8ECEB /* LaunchScreen.storyboard */,
-				1558868824413E0700A8ECEB /* Info.plist */,
-				1558869C24413E2C00A8ECEB /* AppCoordinator.swift */,
-				155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */,
-				155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */,
-				155886A62441599700A8ECEB /* Coordinator.swift */,
-				155886A8244159B300A8ECEB /* HomeCoordinator.swift */,
-				155886AA244159CE00A8ECEB /* HomeRouter.swift */,
-				155886A42441597F00A8ECEB /* AppRouter.swift */,
-				155886A22441596800A8ECEB /* Router.swift */,
-				1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */,
+				1515B5EC244353250093D90B /* App */,
+				1515B5ED244353500093D90B /* Views */,
+				1515B5EE2443535B0093D90B /* ViewModels */,
+				1515B5F2244353CE0093D90B /* Service */,
+				1515B5EF244353690093D90B /* Coordinators */,
+				1515B5F02443537A0093D90B /* Routers */,
+				1515B5F12443539A0093D90B /* Utility */,
 			);
 			path = Infosys;
 			sourceTree = "<group>";
@@ -355,7 +411,7 @@
 				1558867F24413E0600A8ECEB /* HomeViewController.swift in Sources */,
 				155886A52441597F00A8ECEB /* AppRouter.swift in Sources */,
 				155886A32441596800A8ECEB /* Router.swift in Sources */,
-				155886AD24415A2400A8ECEB /* ViewController+Namespace.swift in Sources */,
+				155886AD24415A2400A8ECEB /* UIViewController+Namespace.swift in Sources */,
 				1558867B24413E0600A8ECEB /* AppDelegate.swift in Sources */,
 				1515B5E52442E5CF0093D90B /* HomeTableViewCell.swift in Sources */,
 				1515B5E7244318C00093D90B /* HomeCellViewModel.swift in Sources */,
