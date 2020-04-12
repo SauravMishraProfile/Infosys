@@ -20,8 +20,15 @@ public extension ResponseConfiguring {
 }
 
 public struct DefaultErrorModel: Codable {
+    public let type: ErrorType
     let errorCode: Int
     let description: String
+}
+
+public enum ErrorType: Int, Codable {
+    case general
+    case noInternet
+    case invalidData
 }
 
 public enum Response<SuccessValue> {

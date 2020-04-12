@@ -12,12 +12,6 @@ public protocol RequestConfiguring: EndPoint {
      var parameters: [String: Any] { get }
 }
 
-extension RequestConfiguring {
-    var parameters: [String: Any] {
-        return [:]
-    }
-}
-
 public protocol EndPoint {
     var scheme: String { get }
     var host: String { get }

@@ -11,6 +11,7 @@ import NetworkClient
 protocol HomeServiceDelegate: AnyObject {
     func didSucceed(_ viewModel: HomeViewModel)
     func didFail(_ viewModel: HomeViewModel)
+    func didStartLoading(_ viewModel: HomeViewModel)
 }
 
 final class HomeViewModel {
@@ -25,9 +26,23 @@ final class HomeViewModel {
     }
 
     enum ErrorState {
-        static let title = "Error"
-        static let message = "Something went wrong!"
+        static let generaltitle = "Error"
+        static let generalMessage = "Something went wrong!"
+        static let invalidDataMessage = "Invalid Data Received."
+        static let noInternet = "Please check your internet connection."
+
         static let done = "OK"
+
+        static func message(for type: ErrorType? = .general) -> String {
+            switch  type {
+            case .general, .none:
+                return ErrorState.generalMessage
+            case .invalidData:
+                return ErrorState.invalidDataMessage
+            case .noInternet:
+                return ErrorState.noInternet
+            }
+        }
     }
 
     // MARK: - Properties
@@ -40,6 +55,8 @@ final class HomeViewModel {
                 delegate?.didSucceed(self)
             case .failure:
                 delegate?.didFail(self)
+            case .loading:
+                delegate?.didStartLoading(self)
             default:
                 break
             }
@@ -65,6 +82,7 @@ final class HomeViewModel {
     // MARK: - Internal
 
     func fetchData() {
+        state = .loading
         self.service.fetchHomeData { [weak self] result in
             switch result {
             case .success(let dataFeed):

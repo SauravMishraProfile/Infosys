@@ -42,6 +42,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.cellViewModels[safe: 0]?.title, "<Row Title>")
         XCTAssertEqual(viewModel.cellViewModels[safe: 0]?.description, "<Description>")
         XCTAssertEqual(viewModel.cellViewModels[safe: 0]?.imageURLString, "<Image URL String>")
+        XCTAssertTrue(mockService.didStartLoadingCalled)
         XCTAssertTrue(mockService.didSucceedCalled)
     }
 
@@ -51,7 +52,7 @@ final class HomeViewModelTests: XCTestCase {
         let viewModel = HomeViewModel(service: mockHomeServiceProvider)
         viewModel.delegate = mockService
 
-        let errorModel = DefaultErrorModel(errorCode: 0, description: "<Error Model>")
+        let errorModel = DefaultErrorModel(type: .general, errorCode: 0, description: "<Error Model>")
         mockHomeServiceProvider.mockCompletion = Response.failure(errorModel)
 
         viewModel.fetchData()
@@ -61,13 +62,29 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.cellViewModels.count, 0)
         XCTAssertTrue(mockService.didFailCalled)
         XCTAssertEqual(viewModel.errorModel?.errorCode, 0)
+        XCTAssertEqual(viewModel.errorModel?.type, .general)
+        XCTAssertTrue(mockService.didStartLoadingCalled)
         XCTAssertEqual(viewModel.errorModel?.description, "<Error Model>")
     }
 
     func testErrorMessages() {
-        XCTAssertEqual(HomeViewModel.ErrorState.message, "Something went wrong!")
-        XCTAssertEqual(HomeViewModel.ErrorState.title, "Error")
+        XCTAssertEqual(HomeViewModel.ErrorState.generaltitle, "Error")
         XCTAssertEqual(HomeViewModel.ErrorState.done, "OK")
+    }
+
+    func testErrorMessagesInvalidData() {
+        let message = HomeViewModel.ErrorState.message(for: .invalidData)
+        XCTAssertEqual(message, "Invalid Data Received.")
+    }
+
+    func testErrorMessagesNoInternet() {
+        let message = HomeViewModel.ErrorState.message(for: .noInternet)
+        XCTAssertEqual(message, "Please check your internet connection.")
+    }
+
+    func testErrorMessagesGeneral() {
+        let message = HomeViewModel.ErrorState.message(for: .general)
+        XCTAssertEqual(message, "Something went wrong!")
     }
 
 }
@@ -91,5 +108,10 @@ private final class MockHomeServiceDelegate: HomeServiceDelegate {
     var didFailCalled: Bool = false
     func didFail(_ viewModel: HomeViewModel) {
         didFailCalled = true
+    }
+
+    var didStartLoadingCalled: Bool = false
+    func didStartLoading(_ viewModel: HomeViewModel) {
+        didStartLoadingCalled = true
     }
 }

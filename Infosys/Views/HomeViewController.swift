@@ -26,6 +26,13 @@ class HomeViewController: UIViewController, ViewModelInjectable {
 
     private lazy var tableView =  UITableView(frame: .zero)
     private lazy var refreshControl = UIRefreshControl()
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+       let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .gray
+        activityIndicator.color = .black
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
 
     // MARK: - Lifecycle
 
@@ -36,6 +43,7 @@ class HomeViewController: UIViewController, ViewModelInjectable {
         assertDependencies()
 
         setUpTableView()
+        setUpActivityIndicator()
 
         viewModel.fetchData()
     }
@@ -48,6 +56,13 @@ private extension HomeViewController {
 
     private enum Constants {
         static let cellID = "cellID"
+    }
+
+    private func setUpActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 
     private func setUpTableView() {
@@ -100,6 +115,8 @@ extension HomeViewController: HomeServiceDelegate {
 
     func didSucceed(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
+            self.tableView.isHidden = false
+            self.activityIndicator.stopAnimating()
             self.refreshControl.endRefreshingIfNecessary()
             self.title = viewModel.screenTitle
             self.tableView.reloadData()
@@ -108,10 +125,19 @@ extension HomeViewController: HomeServiceDelegate {
 
     func didFail(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
+            self.tableView.isHidden = false
+            self.activityIndicator.stopAnimating()
             self.refreshControl.endRefreshingIfNecessary()
-            let alert = UIAlertController(title: HomeViewModel.ErrorState.title, message: HomeViewModel.ErrorState.message, preferredStyle: .alert)
+            let alert = UIAlertController(title: HomeViewModel.ErrorState.generaltitle, message: HomeViewModel.ErrorState.message(for: viewModel.errorModel?.type), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: HomeViewModel.ErrorState.done, style: .default))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func didStartLoading(_ viewModel: HomeViewModel) {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.tableView.isHidden = true
         }
     }
 }
