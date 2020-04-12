@@ -12,7 +12,6 @@ protocol HomeServiceProvider: AnyObject {
     func fetchHomeData(completion: @escaping (Response<DataFeed>) -> Void)
 }
 
-
 final class HomeService: RequestPerforming {
     typealias ErrorModel = DefaultErrorModel
     typealias SuccessModel = DataFeed

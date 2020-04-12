@@ -14,7 +14,7 @@ final class HomeViewModel {
     init(service: HomeServiceProvider = HomeService()) {
         self.service = service
     }
-    
+
     func fetchData() {
         self.service.fetchHomeData { [weak self] result in
             switch result {
@@ -25,16 +25,16 @@ final class HomeViewModel {
             }
         }
     }
-    
+
     private func processSuccessResponse(model: DataFeed) {
-        
+
     }
-    
+
     private func processFailureResponse(errorModel: Codable) {
-        
+
     }
 }
 
 struct HomeCellViewModel {
-    
+
 }

@@ -22,8 +22,6 @@ class HomeViewController: UIViewController, ViewModelInjectable {
 
         assertDependencies()
         setUpViews()
-
-        viewModel.perform()
     }
 }
 
