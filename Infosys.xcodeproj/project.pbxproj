@@ -3,17 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1515B5D52441F8B30093D90B /* NetworkClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1515B5D42441F8B30093D90B /* NetworkClient.framework */; };
+		1515B5D62441F8B30093D90B /* NetworkClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1515B5D42441F8B30093D90B /* NetworkClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1515B5E12442BF4D0093D90B /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E02442BF4D0093D90B /* HomeService.swift */; };
+		1515B5E32442BF830093D90B /* DataFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E22442BF830093D90B /* DataFeed.swift */; };
+		1515B5E52442E5CF0093D90B /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */; };
 		1558867B24413E0600A8ECEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867A24413E0600A8ECEB /* AppDelegate.swift */; };
 		1558867D24413E0600A8ECEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867C24413E0600A8ECEB /* SceneDelegate.swift */; };
-		1558867F24413E0600A8ECEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867E24413E0600A8ECEB /* ViewController.swift */; };
-		1558868224413E0600A8ECEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1558868024413E0600A8ECEB /* Main.storyboard */; };
+		1558867F24413E0600A8ECEB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867E24413E0600A8ECEB /* HomeViewController.swift */; };
 		1558868424413E0700A8ECEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1558868324413E0700A8ECEB /* Assets.xcassets */; };
 		1558868724413E0700A8ECEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1558868524413E0700A8ECEB /* LaunchScreen.storyboard */; };
-		1558869224413E0800A8ECEB /* InfosysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558869124413E0800A8ECEB /* InfosysTests.swift */; };
+		1558869D24413E2C00A8ECEB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558869C24413E2C00A8ECEB /* AppCoordinator.swift */; };
+		1558869F2441450D00A8ECEB /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558869E2441450D00A8ECEB /* AppCoordinatorTests.swift */; };
+		155886A12441589100A8ECEB /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A02441589100A8ECEB /* HomeCoordinatorTests.swift */; };
+		155886A32441596800A8ECEB /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A22441596800A8ECEB /* Router.swift */; };
+		155886A52441597F00A8ECEB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A42441597F00A8ECEB /* AppRouter.swift */; };
+		155886A72441599700A8ECEB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A62441599700A8ECEB /* Coordinator.swift */; };
+		155886A9244159B300A8ECEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886A8244159B300A8ECEB /* HomeCoordinator.swift */; };
+		155886AB244159CE00A8ECEB /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AA244159CE00A8ECEB /* HomeRouter.swift */; };
+		155886AD24415A2400A8ECEB /* ViewController+Namespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */; };
+		155886AF24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */; };
+		155886B124415AE000A8ECEB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155886B024415AE000A8ECEB /* HomeViewModel.swift */; };
+		90968BDEBCDDA459E5000F68 /* Pods_Infosys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB7423C94DA2E8C809DC279 /* Pods_Infosys.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,18 +41,48 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1515B5D72441F8B30093D90B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1515B5D62441F8B30093D90B /* NetworkClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1515B5D42441F8B30093D90B /* NetworkClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1515B5E02442BF4D0093D90B /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		1515B5E22442BF830093D90B /* DataFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeed.swift; sourceTree = "<group>"; };
+		1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		1558867724413E0600A8ECEB /* Infosys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infosys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1558867A24413E0600A8ECEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1558867C24413E0600A8ECEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1558867E24413E0600A8ECEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1558868124413E0600A8ECEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1558867E24413E0600A8ECEB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1558868324413E0700A8ECEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1558868624413E0700A8ECEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1558868824413E0700A8ECEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1558868D24413E0800A8ECEB /* InfosysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfosysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1558869124413E0800A8ECEB /* InfosysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosysTests.swift; sourceTree = "<group>"; };
 		1558869324413E0800A8ECEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1558869C24413E2C00A8ECEB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1558869E2441450D00A8ECEB /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		155886A02441589100A8ECEB /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
+		155886A22441596800A8ECEB /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		155886A42441597F00A8ECEB /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		155886A62441599700A8ECEB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		155886A8244159B300A8ECEB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		155886AA244159CE00A8ECEB /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Namespace.swift"; sourceTree = "<group>"; };
+		155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ViewModelInjectable.swift"; sourceTree = "<group>"; };
+		155886B024415AE000A8ECEB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2B896BE7350B97E82B03FF2D /* Pods-Infosys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infosys.release.xcconfig"; path = "Target Support Files/Pods-Infosys/Pods-Infosys.release.xcconfig"; sourceTree = "<group>"; };
+		3DB7423C94DA2E8C809DC279 /* Pods_Infosys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Infosys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		569DC495970257218CFE6AB2 /* Pods-Infosys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infosys.debug.xcconfig"; path = "Target Support Files/Pods-Infosys/Pods-Infosys.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1515B5D52441F8B30093D90B /* NetworkClient.framework in Frameworks */,
+				90968BDEBCDDA459E5000F68 /* Pods_Infosys.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +111,8 @@
 				1558867924413E0600A8ECEB /* Infosys */,
 				1558869024413E0800A8ECEB /* InfosysTests */,
 				1558867824413E0600A8ECEB /* Products */,
+				27AD5978111DF0053D30B2B5 /* Pods */,
+				C2993047BF486017591E9CD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,11 +130,22 @@
 			children = (
 				1558867A24413E0600A8ECEB /* AppDelegate.swift */,
 				1558867C24413E0600A8ECEB /* SceneDelegate.swift */,
-				1558867E24413E0600A8ECEB /* ViewController.swift */,
-				1558868024413E0600A8ECEB /* Main.storyboard */,
+				1558867E24413E0600A8ECEB /* HomeViewController.swift */,
+				155886B024415AE000A8ECEB /* HomeViewModel.swift */,
+				1515B5E02442BF4D0093D90B /* HomeService.swift */,
+				1515B5E22442BF830093D90B /* DataFeed.swift */,
 				1558868324413E0700A8ECEB /* Assets.xcassets */,
 				1558868524413E0700A8ECEB /* LaunchScreen.storyboard */,
 				1558868824413E0700A8ECEB /* Info.plist */,
+				1558869C24413E2C00A8ECEB /* AppCoordinator.swift */,
+				155886AC24415A2400A8ECEB /* ViewController+Namespace.swift */,
+				155886AE24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift */,
+				155886A62441599700A8ECEB /* Coordinator.swift */,
+				155886A8244159B300A8ECEB /* HomeCoordinator.swift */,
+				155886AA244159CE00A8ECEB /* HomeRouter.swift */,
+				155886A42441597F00A8ECEB /* AppRouter.swift */,
+				155886A22441596800A8ECEB /* Router.swift */,
+				1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */,
 			);
 			path = Infosys;
 			sourceTree = "<group>";
@@ -93,10 +153,29 @@
 		1558869024413E0800A8ECEB /* InfosysTests */ = {
 			isa = PBXGroup;
 			children = (
-				1558869124413E0800A8ECEB /* InfosysTests.swift */,
 				1558869324413E0800A8ECEB /* Info.plist */,
+				1558869E2441450D00A8ECEB /* AppCoordinatorTests.swift */,
+				155886A02441589100A8ECEB /* HomeCoordinatorTests.swift */,
 			);
 			path = InfosysTests;
+			sourceTree = "<group>";
+		};
+		27AD5978111DF0053D30B2B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				569DC495970257218CFE6AB2 /* Pods-Infosys.debug.xcconfig */,
+				2B896BE7350B97E82B03FF2D /* Pods-Infosys.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C2993047BF486017591E9CD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1515B5D42441F8B30093D90B /* NetworkClient.framework */,
+				3DB7423C94DA2E8C809DC279 /* Pods_Infosys.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +185,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1558869624413E0800A8ECEB /* Build configuration list for PBXNativeTarget "Infosys" */;
 			buildPhases = (
+				E3E5CC25BABD66C4573B5841 /* [CP] Check Pods Manifest.lock */,
 				1558867324413E0600A8ECEB /* Sources */,
 				1558867424413E0600A8ECEB /* Frameworks */,
 				1558867524413E0600A8ECEB /* Resources */,
+				155886B22441C0A900A8ECEB /* SwiftLint */,
+				5C88FF8E4E32AAB090DEA21A /* [CP] Embed Pods Frameworks */,
+				1515B5D72441F8B30093D90B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,7 +265,6 @@
 			files = (
 				1558868724413E0700A8ECEB /* LaunchScreen.storyboard in Resources */,
 				1558868424413E0700A8ECEB /* Assets.xcassets in Resources */,
-				1558868224413E0600A8ECEB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,14 +277,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		155886B22441C0A900A8ECEB /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\n";
+		};
+		5C88FF8E4E32AAB090DEA21A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Infosys/Pods-Infosys-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Infosys/Pods-Infosys-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Infosys/Pods-Infosys-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3E5CC25BABD66C4573B5841 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Infosys-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1558867324413E0600A8ECEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1558867F24413E0600A8ECEB /* ViewController.swift in Sources */,
+				1558869D24413E2C00A8ECEB /* AppCoordinator.swift in Sources */,
+				1558867F24413E0600A8ECEB /* HomeViewController.swift in Sources */,
+				155886A52441597F00A8ECEB /* AppRouter.swift in Sources */,
+				155886A32441596800A8ECEB /* Router.swift in Sources */,
+				155886AD24415A2400A8ECEB /* ViewController+Namespace.swift in Sources */,
 				1558867B24413E0600A8ECEB /* AppDelegate.swift in Sources */,
+				1515B5E52442E5CF0093D90B /* HomeTableViewCell.swift in Sources */,
+				155886A9244159B300A8ECEB /* HomeCoordinator.swift in Sources */,
+				155886B124415AE000A8ECEB /* HomeViewModel.swift in Sources */,
+				1515B5E12442BF4D0093D90B /* HomeService.swift in Sources */,
 				1558867D24413E0600A8ECEB /* SceneDelegate.swift in Sources */,
+				155886AF24415A6200A8ECEB /* UIViewController+ViewModelInjectable.swift in Sources */,
+				155886AB244159CE00A8ECEB /* HomeRouter.swift in Sources */,
+				155886A72441599700A8ECEB /* Coordinator.swift in Sources */,
+				1515B5E32442BF830093D90B /* DataFeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1558869224413E0800A8ECEB /* InfosysTests.swift in Sources */,
+				1558869F2441450D00A8ECEB /* AppCoordinatorTests.swift in Sources */,
+				155886A12441589100A8ECEB /* HomeCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +380,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1558868024413E0600A8ECEB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1558868124413E0600A8ECEB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1558868524413E0700A8ECEB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -348,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -360,10 +507,12 @@
 		};
 		1558869724413E0800A8ECEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 569DC495970257218CFE6AB2 /* Pods-Infosys.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Infosys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,10 +526,12 @@
 		};
 		1558869824413E0800A8ECEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B896BE7350B97E82B03FF2D /* Pods-Infosys.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Infosys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,7 +550,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = InfosysTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,7 +571,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = InfosysTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
