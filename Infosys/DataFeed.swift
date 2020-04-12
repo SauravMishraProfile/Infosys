@@ -13,6 +13,6 @@ struct DataFeed: Codable {
     struct Rows: Codable {
         let title: String?
         let description: String?
-        let imageHRef: String?
+        let imageHref: String?
     }
 }

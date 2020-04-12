@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 final class HomeTableViewCell: UITableViewCell {
 
@@ -27,14 +28,47 @@ final class HomeTableViewCell: UITableViewCell {
         fatalError("Should not instantiate from nib")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        descriptionImageView.af.cancelImageRequest()
+        descriptionImageView.layer.removeAllAnimations()
+        descriptionImageView.image = nil
+    }
+
     func configure(with viewModel: HomeCellViewModel) {
+        titleLabel.isHidden = viewModel.shouldHideTitleLabel
+        descriptionLabel.isHidden = viewModel.shouldHideDescriptionLabel
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
+        setUpImageView(viewModel: viewModel)
+    }
+}
+
+private extension HomeTableViewCell {
+    private func setUpImageView(viewModel: HomeCellViewModel) {
+        if viewModel.shouldDownloadImage {
+            DispatchQueue.main.async {
+                self.descriptionImageView.af.setImage(
+                    withURL: viewModel.url!,
+                    placeholderImage: UIImage(named: viewModel.placeHolderImageName),
+                    imageTransition: .crossDissolve(0.2),
+                    runImageTransitionIfCached: false)
+            }
+        } else {
+            descriptionImageView.image = UIImage(named: viewModel.placeHolderImageName)
+        }
     }
 
     private func addConstraints() {
         descriptionImageView.snp.makeConstraints { make in
             make.height.width.equalTo(50)
+        }
+
+        verticalStackView.snp.makeConstraints { make in
+            make.top.equalTo(horizontalStackView.snp.top)
+            make.bottom.equalTo(horizontalStackView.snp.bottom)
+            make.right.equalTo(horizontalStackView.snp.right)
         }
 
         horizontalStackView.snp.makeConstraints { make in
@@ -44,7 +78,6 @@ final class HomeTableViewCell: UITableViewCell {
             make.trailing.equalTo(contentView.snp.trailing).inset(16)
         }
     }
-
 }
 
 private extension UILabel {

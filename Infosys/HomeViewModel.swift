@@ -59,17 +59,11 @@ final class HomeViewModel {
 
     private func processSuccessResponse(model: DataFeed) {
         screenTitle = model.title
-        cellViewModels = model.rows.map { HomeCellViewModel(imageURL: $0.imageHRef, title: $0.title, description: $0.description) }
+        cellViewModels = model.rows.compactMap { HomeCellViewModel(imageURLString: $0.imageHref, title: $0.title, description: $0.description) }
     }
 
     private func processFailureResponse(errorModel: Codable) {
 
     }
 
-}
-
-struct HomeCellViewModel {
-    let imageURL: String?
-    let title: String?
-    let description: String?
 }
