@@ -9,6 +9,7 @@
 import Foundation
 
 struct HomeCellViewModel {
+
     let imageURLString: String?
     let title: String?
     let description: String?

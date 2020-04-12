@@ -11,6 +11,9 @@ import SnapKit
 
 class HomeViewController: UIViewController, ViewModelInjectable {
 
+    // MARK: - Properties
+
+    // MARK: Internal
     var viewModel: HomeViewModel! = HomeViewModel() {
         didSet {
             viewModel.delegate = self
@@ -19,8 +22,12 @@ class HomeViewController: UIViewController, ViewModelInjectable {
 
     weak var coordinator: HomeCoordinator!
 
+    // MARK: Private
+
     private lazy var tableView =  UITableView(frame: .zero)
     private lazy var refreshControl = UIRefreshControl()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,9 @@ class HomeViewController: UIViewController, ViewModelInjectable {
     }
 }
 
+// MARK: - Extensions
+
+// MARK: Private
 private extension HomeViewController {
 
     private enum Constants {
@@ -60,6 +70,8 @@ private extension HomeViewController {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +94,10 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
+// MARK: HomeServiceDelegate
+
 extension HomeViewController: HomeServiceDelegate {
+
     func didSucceed(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshingIfNecessary()
@@ -100,6 +115,8 @@ extension HomeViewController: HomeServiceDelegate {
         }
     }
 }
+
+// MARK: Private Extensions
 
 private extension UIRefreshControl {
     func endRefreshingIfNecessary() {

@@ -15,6 +15,8 @@ protocol HomeServiceDelegate: AnyObject {
 
 final class HomeViewModel {
 
+    // MARK: - enums
+
     enum State {
         case initial
         case loading
@@ -28,7 +30,9 @@ final class HomeViewModel {
         static let done = "OK"
     }
 
-    weak var delegate: HomeServiceDelegate?
+    // MARK: - Properties
+
+    // MARK: Private
     private(set) var state: State = .initial {
         didSet {
             switch state {
@@ -47,9 +51,18 @@ final class HomeViewModel {
     private(set) var screenTitle: String?
     private(set) var errorModel: DefaultErrorModel?
 
+    // MARK: Internal
+
+    weak var delegate: HomeServiceDelegate?
+
+    // MARK: - Initialiser
     init(service: HomeServiceProvider = HomeService()) {
         self.service = service
     }
+
+    // MARK: - Methods
+
+    // MARK: - Internal
 
     func fetchData() {
         self.service.fetchHomeData { [weak self] result in
@@ -63,6 +76,8 @@ final class HomeViewModel {
             }
         }
     }
+
+    // MARK: - Private
 
     private func processSuccessResponse(model: DataFeed) {
         screenTitle = model.title

@@ -10,6 +10,10 @@ import UIKit
 
 final class HomeCoordinator: Coordinator {
 
+    // MARK: - Properties
+
+    // MARK: Private
+
     private lazy var homeViewController: HomeViewController = {
         let homeViewModel = HomeViewModel()
         let homeViewController: HomeViewController = .homeViewController
@@ -20,12 +24,18 @@ final class HomeCoordinator: Coordinator {
 
     private let window: UIWindow
 
-    var router: Router
+    // MARK: Internal
+
+    let router: Router
+
+    // MARK: - Initialiser
 
     init(window: UIWindow, navigationController: UINavigationController) {
         self.window = window
         self.router = HomeRouter(navigationController: navigationController)
     }
+
+    // MARK: Internal
 
     func start() {
         router.navigationController.viewControllers = [homeViewController]

@@ -11,11 +11,17 @@ import AlamofireImage
 
 final class HomeTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+
+    // MARK: Private
+
     private lazy var titleLabel: UILabel = .titleLabel()
     private lazy var descriptionLabel: UILabel = .descriptionLabel()
     private lazy var descriptionImageView: UIImageView = .descriptionImageView()
     private lazy var verticalStackView: UIStackView = .verticalStackView(arrangedSubViews: [titleLabel, descriptionLabel])
     private lazy var horizontalStackView: UIStackView = .horizontalStackView(arrangedSubViews: [descriptionImageView, verticalStackView])
+
+    // MARK: - Initialiser
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,6 +34,8 @@ final class HomeTableViewCell: UITableViewCell {
         fatalError("Should not instantiate from nib")
     }
 
+    // MARK: - Lifecycle
+
     override func prepareForReuse() {
         super.prepareForReuse()
 
@@ -35,6 +43,10 @@ final class HomeTableViewCell: UITableViewCell {
         descriptionImageView.layer.removeAllAnimations()
         descriptionImageView.image = nil
     }
+
+    // MARK: - Methods
+
+    // MARK: Internal
 
     func configure(with viewModel: HomeCellViewModel) {
         titleLabel.isHidden = viewModel.shouldHideTitleLabel
@@ -44,6 +56,10 @@ final class HomeTableViewCell: UITableViewCell {
         setUpImageView(viewModel: viewModel)
     }
 }
+
+// MARK: - Extensions
+
+// MARK: Private
 
 private extension HomeTableViewCell {
     private func setUpImageView(viewModel: HomeCellViewModel) {
@@ -79,6 +95,8 @@ private extension HomeTableViewCell {
         }
     }
 }
+
+// MARK: Private Extensions
 
 private extension UILabel {
     static func titleLabel() -> UILabel {
