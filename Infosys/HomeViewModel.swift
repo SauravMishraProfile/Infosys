@@ -23,7 +23,7 @@ final class HomeViewModel {
     }
 
     weak var delegate: HomeServiceDelegate?
-    private var state: State = .initial {
+    private(set) var state: State = .initial {
         didSet {
             switch state {
             case .success:

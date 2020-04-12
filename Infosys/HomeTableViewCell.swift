@@ -102,7 +102,7 @@ private extension UILabel {
 
 private extension UIImageView {
     static func descriptionImageView() -> UIImageView {
-        let imgView = UIImageView(image: UIImage(named: "desert"))
+        let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
         return imgView

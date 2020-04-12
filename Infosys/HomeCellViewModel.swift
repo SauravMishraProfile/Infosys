@@ -27,17 +27,17 @@ struct HomeCellViewModel {
         return url.isNil() == false
     }
 
-    var url: URL? {
-        guard let imageURLString = imageURLString else { return nil}
-        return URL(string: imageURLString)
-    }
-
     var shouldHideTitleLabel: Bool {
         return title.isNil()
     }
 
     var shouldHideDescriptionLabel: Bool {
         return description.isNil()
+    }
+
+    var url: URL? {
+        guard let imageURLString = imageURLString else { return nil}
+        return URL(string: imageURLString)
     }
 
 }
