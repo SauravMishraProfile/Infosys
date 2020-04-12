@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, ViewModelInjectable {
     weak var coordinator: HomeCoordinator!
 
     private lazy var tableView =  UITableView(frame: .zero)
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +45,23 @@ private extension HomeViewController {
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: Constants.cellID)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
+
+    @objc
+    func refresh(sender: UIRefreshControl) {
+        viewModel.fetchData()
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as? HomeTableViewCell else {
             assertionFailure("Unable To Dequeue cell")
@@ -75,6 +85,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: HomeServiceDelegate {
     func didSucceed(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
+            self.refreshControl.endRefreshingIfNecessary()
             self.title = viewModel.screenTitle
             self.tableView.reloadData()
         }
@@ -82,9 +93,18 @@ extension HomeViewController: HomeServiceDelegate {
 
     func didFail(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
+            self.refreshControl.endRefreshingIfNecessary()
             let alert = UIAlertController(title: "Error", message: "Something went wrong!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+private extension UIRefreshControl {
+    func endRefreshingIfNecessary() {
+        if isRefreshing {
+            endRefreshing()
         }
     }
 }
