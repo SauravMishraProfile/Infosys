@@ -31,10 +31,14 @@ extension ResponseGenerating {
 
     func decode<T: Codable, U: Codable>(successDecodingType: T.Type, errorDecodingType: U.Type, data: Data?, response: URLResponse?, error: Error?) -> Response<T> {
         guard let responseData = data,
-        Reachability.isInternetAvailable(),
             error == nil else {
-                let errorModel = DefaultErrorModel(errorCode: 0, description: "Error Returned")
+                let errorModel = DefaultErrorModel(type: .general, errorCode: 0, description: "Error Returned")
                 return .failure(errorModel)
+        }
+
+        guard Reachability.isInternetAvailable() else {
+            let errorModel = DefaultErrorModel(type: .noInternet, errorCode: 0, description: "Error Returned")
+            return .failure(errorModel)
         }
 
         guard let response = response as? HTTPURLResponse,
@@ -45,7 +49,7 @@ extension ResponseGenerating {
         do {
             let responseString = String(data: responseData, encoding: self.encodingStrategy)
             guard let modifiedDataInUTF8Format = responseString?.data(using: .utf8) else {
-                  let errorModel = DefaultErrorModel(errorCode: 0, description: "could not convert data to UTF-8 format")
+                let errorModel = DefaultErrorModel(type: .invalidData, errorCode: 0, description: "could not convert data to UTF-8 format")
                   return .failure(errorModel)
              }
             let response = try self.decoder.decode(successDecodingType, from: modifiedDataInUTF8Format)
@@ -61,7 +65,7 @@ extension ResponseGenerating {
             let response = try self.decoder.decode(errorDecodingType, from: responseData)
             return .failure(response)
         } catch let error {
-            let errorModel = DefaultErrorModel(errorCode: 0, description: error.localizedDescription)
+            let errorModel = DefaultErrorModel(type: .invalidData, errorCode: 0, description: error.localizedDescription)
             return .failure(errorModel)
         }
     }
