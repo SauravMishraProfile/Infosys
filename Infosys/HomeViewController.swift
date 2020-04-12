@@ -11,7 +11,11 @@ import SnapKit
 
 class HomeViewController: UIViewController, ViewModelInjectable {
 
-    var viewModel: HomeViewModel! = HomeViewModel()
+    var viewModel: HomeViewModel! = HomeViewModel() {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     weak var coordinator: HomeCoordinator!
 
     private lazy var tableView =  UITableView(frame: .zero)
@@ -22,6 +26,8 @@ class HomeViewController: UIViewController, ViewModelInjectable {
 
         assertDependencies()
         setUpViews()
+
+        viewModel.fetchData()
     }
 }
 
@@ -32,7 +38,6 @@ private extension HomeViewController {
     }
 
     private func setUpViews() {
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
@@ -46,10 +51,14 @@ private extension HomeViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as? HomeTableViewCell
-        cell?.titleLabel.text = "Ooooo"
-        cell?.descriptionLabel.text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as? HomeTableViewCell else {
+            assertionFailure("Unable To Dequeue cell")
+            return UITableViewCell()
+        }
+        let cellViewModel = viewModel.cellViewModels[indexPath.row]
+        cell.configure(with: cellViewModel)
+
+        return cell
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,10 +66,19 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return viewModel.cellViewModels.count
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension HomeViewController: HomeServiceDelegate {
+    func didSucceed(_ viewModel: HomeViewModel) {
+        DispatchQueue.main.async {
+            self.title = viewModel.screenTitle
+            self.tableView.reloadData()
+        }
+    }
 
+    func didFail(_ viewModel: HomeViewModel) {
+
+    }
 }

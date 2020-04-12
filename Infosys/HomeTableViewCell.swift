@@ -10,8 +10,8 @@ import UIKit
 
 final class HomeTableViewCell: UITableViewCell {
 
-    lazy var titleLabel: UILabel = .titleLabel()
-    lazy var descriptionLabel: UILabel = .descriptionLabel()
+    private lazy var titleLabel: UILabel = .titleLabel()
+    private lazy var descriptionLabel: UILabel = .descriptionLabel()
     private lazy var descriptionImageView: UIImageView = .descriptionImageView()
     private lazy var verticalStackView: UIStackView = .verticalStackView(arrangedSubViews: [titleLabel, descriptionLabel])
     private lazy var horizontalStackView: UIStackView = .horizontalStackView(arrangedSubViews: [descriptionImageView, verticalStackView])
@@ -21,6 +21,15 @@ final class HomeTableViewCell: UITableViewCell {
 
         contentView.addSubview(horizontalStackView)
         addConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("Should not instantiate from nib")
+    }
+
+    func configure(with viewModel: HomeCellViewModel) {
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
     }
 
     private func addConstraints() {
@@ -36,9 +45,6 @@ final class HomeTableViewCell: UITableViewCell {
         }
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("Should not instantiate from nib")
-    }
 }
 
 private extension UILabel {
