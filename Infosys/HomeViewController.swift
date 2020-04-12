@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, ViewModelInjectable {
     weak var coordinator: HomeCoordinator!
 
     private lazy var tableView =  UITableView(frame: .zero)
-    private let refreshControl = UIRefreshControl()
+    private lazy var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +94,8 @@ extension HomeViewController: HomeServiceDelegate {
     func didFail(_ viewModel: HomeViewModel) {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshingIfNecessary()
-            let alert = UIAlertController(title: "Error", message: "Something went wrong!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            let alert = UIAlertController(title: HomeViewModel.ErrorState.title, message: HomeViewModel.ErrorState.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: HomeViewModel.ErrorState.done, style: .default))
             self.present(alert, animated: true, completion: nil)
         }
     }

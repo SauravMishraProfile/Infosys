@@ -22,6 +22,12 @@ final class HomeViewModel {
         case failure
     }
 
+    enum ErrorState {
+        static let title = "Error"
+        static let message = "Something went wrong!"
+        static let done = "OK"
+    }
+
     weak var delegate: HomeServiceDelegate?
     private(set) var state: State = .initial {
         didSet {
