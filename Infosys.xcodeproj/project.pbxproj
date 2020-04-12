@@ -12,6 +12,9 @@
 		1515B5E12442BF4D0093D90B /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E02442BF4D0093D90B /* HomeService.swift */; };
 		1515B5E32442BF830093D90B /* DataFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E22442BF830093D90B /* DataFeed.swift */; };
 		1515B5E52442E5CF0093D90B /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */; };
+		1515B5E7244318C00093D90B /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E6244318C00093D90B /* HomeCellViewModel.swift */; };
+		1515B5E924433A4F0093D90B /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5E824433A4F0093D90B /* HomeViewModelTests.swift */; };
+		1515B5EB2443420A0093D90B /* HomeCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5EA2443420A0093D90B /* HomeCellViewModelTests.swift */; };
 		1558867B24413E0600A8ECEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867A24413E0600A8ECEB /* AppDelegate.swift */; };
 		1558867D24413E0600A8ECEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867C24413E0600A8ECEB /* SceneDelegate.swift */; };
 		1558867F24413E0600A8ECEB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558867E24413E0600A8ECEB /* HomeViewController.swift */; };
@@ -60,6 +63,9 @@
 		1515B5E02442BF4D0093D90B /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		1515B5E22442BF830093D90B /* DataFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeed.swift; sourceTree = "<group>"; };
 		1515B5E42442E5CF0093D90B /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		1515B5E6244318C00093D90B /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
+		1515B5E824433A4F0093D90B /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		1515B5EA2443420A0093D90B /* HomeCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModelTests.swift; sourceTree = "<group>"; };
 		1558867724413E0600A8ECEB /* Infosys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Infosys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1558867A24413E0600A8ECEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1558867C24413E0600A8ECEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				1558867C24413E0600A8ECEB /* SceneDelegate.swift */,
 				1558867E24413E0600A8ECEB /* HomeViewController.swift */,
 				155886B024415AE000A8ECEB /* HomeViewModel.swift */,
+				1515B5E6244318C00093D90B /* HomeCellViewModel.swift */,
 				1515B5E02442BF4D0093D90B /* HomeService.swift */,
 				1515B5E22442BF830093D90B /* DataFeed.swift */,
 				1558868324413E0700A8ECEB /* Assets.xcassets */,
@@ -156,6 +163,8 @@
 				1558869324413E0800A8ECEB /* Info.plist */,
 				1558869E2441450D00A8ECEB /* AppCoordinatorTests.swift */,
 				155886A02441589100A8ECEB /* HomeCoordinatorTests.swift */,
+				1515B5E824433A4F0093D90B /* HomeViewModelTests.swift */,
+				1515B5EA2443420A0093D90B /* HomeCellViewModelTests.swift */,
 			);
 			path = InfosysTests;
 			sourceTree = "<group>";
@@ -349,6 +358,7 @@
 				155886AD24415A2400A8ECEB /* ViewController+Namespace.swift in Sources */,
 				1558867B24413E0600A8ECEB /* AppDelegate.swift in Sources */,
 				1515B5E52442E5CF0093D90B /* HomeTableViewCell.swift in Sources */,
+				1515B5E7244318C00093D90B /* HomeCellViewModel.swift in Sources */,
 				155886A9244159B300A8ECEB /* HomeCoordinator.swift in Sources */,
 				155886B124415AE000A8ECEB /* HomeViewModel.swift in Sources */,
 				1515B5E12442BF4D0093D90B /* HomeService.swift in Sources */,
@@ -366,6 +376,8 @@
 			files = (
 				1558869F2441450D00A8ECEB /* AppCoordinatorTests.swift in Sources */,
 				155886A12441589100A8ECEB /* HomeCoordinatorTests.swift in Sources */,
+				1515B5E924433A4F0093D90B /* HomeViewModelTests.swift in Sources */,
+				1515B5EB2443420A0093D90B /* HomeCellViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

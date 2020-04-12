@@ -6,4 +6,5 @@ target 'Infosys' do
   # Pods for Infosys
    pod 'SwiftLint'
    pod 'SnapKit'
+   pod 'AlamofireImage'
 end

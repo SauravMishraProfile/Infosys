@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import AlamofireImage
 
 final class HomeTableViewCell: UITableViewCell {
 
-    lazy var titleLabel: UILabel = .titleLabel()
-    lazy var descriptionLabel: UILabel = .descriptionLabel()
+    private lazy var titleLabel: UILabel = .titleLabel()
+    private lazy var descriptionLabel: UILabel = .descriptionLabel()
     private lazy var descriptionImageView: UIImageView = .descriptionImageView()
     private lazy var verticalStackView: UIStackView = .verticalStackView(arrangedSubViews: [titleLabel, descriptionLabel])
     private lazy var horizontalStackView: UIStackView = .horizontalStackView(arrangedSubViews: [descriptionImageView, verticalStackView])
@@ -23,9 +24,51 @@ final class HomeTableViewCell: UITableViewCell {
         addConstraints()
     }
 
+    required init?(coder: NSCoder) {
+        fatalError("Should not instantiate from nib")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        descriptionImageView.af.cancelImageRequest()
+        descriptionImageView.layer.removeAllAnimations()
+        descriptionImageView.image = nil
+    }
+
+    func configure(with viewModel: HomeCellViewModel) {
+        titleLabel.isHidden = viewModel.shouldHideTitleLabel
+        descriptionLabel.isHidden = viewModel.shouldHideDescriptionLabel
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        setUpImageView(viewModel: viewModel)
+    }
+}
+
+private extension HomeTableViewCell {
+    private func setUpImageView(viewModel: HomeCellViewModel) {
+        if viewModel.shouldDownloadImage {
+            DispatchQueue.main.async {
+                self.descriptionImageView.af.setImage(
+                    withURL: viewModel.url!,
+                    placeholderImage: UIImage(named: viewModel.placeHolderImageName),
+                    imageTransition: .crossDissolve(0.2),
+                    runImageTransitionIfCached: false)
+            }
+        } else {
+            descriptionImageView.image = UIImage(named: viewModel.placeHolderImageName)
+        }
+    }
+
     private func addConstraints() {
         descriptionImageView.snp.makeConstraints { make in
             make.height.width.equalTo(50)
+        }
+
+        verticalStackView.snp.makeConstraints { make in
+            make.top.equalTo(horizontalStackView.snp.top)
+            make.bottom.equalTo(horizontalStackView.snp.bottom)
+            make.right.equalTo(horizontalStackView.snp.right)
         }
 
         horizontalStackView.snp.makeConstraints { make in
@@ -34,10 +77,6 @@ final class HomeTableViewCell: UITableViewCell {
             make.leading.equalTo(contentView.snp.leading).inset(20)
             make.trailing.equalTo(contentView.snp.trailing).inset(16)
         }
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("Should not instantiate from nib")
     }
 }
 
@@ -63,7 +102,7 @@ private extension UILabel {
 
 private extension UIImageView {
     static func descriptionImageView() -> UIImageView {
-        let imgView = UIImageView(image: UIImage(named: "desert"))
+        let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
         return imgView
