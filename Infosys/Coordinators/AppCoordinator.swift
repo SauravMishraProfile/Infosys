@@ -14,7 +14,7 @@ final class AppCoordinator: Coordinator {
 
     // MARK: Private
 
-    private let childCoordinators: [Coordinator]
+    let childCoordinators: [Coordinator]
     private let window: UIWindow
 
     // MARK: Internal
