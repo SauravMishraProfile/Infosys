@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocol to decode and generate the response
 protocol ResponseGenerating {
     var decoder: JSONDecoder { get }
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }

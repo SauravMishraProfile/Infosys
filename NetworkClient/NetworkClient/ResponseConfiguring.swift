@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocol to configure the Response with Error and Success type.
 public protocol ResponseConfiguring {
     associatedtype ErrorModel: Codable
     associatedtype SuccessModel: Codable

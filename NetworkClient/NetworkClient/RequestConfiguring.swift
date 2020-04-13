@@ -7,11 +7,13 @@
 
 import Foundation
 
+/// Configure the request with type and parameters.
 public protocol RequestConfiguring: EndPoint {
      var type: RequestType { get }
      var parameters: [String: Any] { get }
 }
 
+/// Protocol to generate the endpoint
 public protocol EndPoint {
     var scheme: String { get }
     var host: String { get }

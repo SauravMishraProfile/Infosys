@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The App Coordinator serves as the entry point to the app and is responsible for intial set up and initiating different child flows - an example can be intitating login flow or dashboard flow in some apps.
 final class AppCoordinator: Coordinator {
 
     // MARK: - Properties

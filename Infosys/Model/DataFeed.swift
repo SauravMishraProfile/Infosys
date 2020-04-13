@@ -6,6 +6,7 @@
 //  Copyright © 2020 Saurav Mishra. All rights reserved.
 //
 
+/// Model as recieved from the Service call.
 struct DataFeed: Codable {
     let title: String
     let rows: [Rows]

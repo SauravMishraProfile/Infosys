@@ -8,10 +8,12 @@
 
 import NetworkClient
 
+/// Protocol facilitating dependecy inversion with Network Client framewok.
 protocol HomeServiceProvider: AnyObject {
     func fetchHomeData(completion: @escaping (Response<DataFeed>) -> Void)
 }
 
+/// The Home service uses the Network Client framework to make service call
 final class HomeService: RequestPerforming {
     typealias ErrorModel = DefaultErrorModel
     typealias SuccessModel = DataFeed

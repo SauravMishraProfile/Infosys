@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+/// Landing View Controller on App launch
 class HomeViewController: UIViewController, ViewModelInjectable {
 
     // MARK: - Properties

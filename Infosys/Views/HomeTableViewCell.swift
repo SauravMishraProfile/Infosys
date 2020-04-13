@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 
+/// The tableview cell for Home Screen.
 final class HomeTableViewCell: UITableViewCell {
 
     // MARK: - Properties
