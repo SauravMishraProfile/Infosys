@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A central place to instantiate and retrieve viewControllers.
 extension UIViewController {
     static let homeViewController = HomeViewController()
 }

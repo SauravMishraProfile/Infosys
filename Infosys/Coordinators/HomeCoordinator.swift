@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The home coordinator class controls home page(first screen) flow and the next originating flows out of the screen - routing and supplying it with dependencies.
 final class HomeCoordinator: Coordinator {
 
     // MARK: - Properties

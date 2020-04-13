@@ -8,12 +8,14 @@
 
 import NetworkClient
 
+/// Protocol for callbacks between Homescreen and HomeviewModel
 protocol HomeServiceDelegate: AnyObject {
     func didSucceed(_ viewModel: HomeViewModel)
     func didFail(_ viewModel: HomeViewModel)
     func didStartLoading(_ viewModel: HomeViewModel)
 }
 
+/// The View Model for Home screen managing states and supplying view data.
 final class HomeViewModel {
 
     // MARK: - enums

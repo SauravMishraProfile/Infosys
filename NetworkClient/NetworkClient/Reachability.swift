@@ -7,6 +7,7 @@
 
 import SystemConfiguration
 
+/// Class to check if network is reachable or not.
 final class Reachability {
 
     static func isInternetAvailable() -> Bool {
@@ -26,7 +27,6 @@ final class Reachability {
        }
        let isReachable = flags.contains(.reachable)
        let needsConnection = flags.contains(.connectionRequired)
-       //   print(isReachable && !needsConnection)
        return (isReachable && !needsConnection)
     }
 

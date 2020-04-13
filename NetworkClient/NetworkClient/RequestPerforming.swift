@@ -13,6 +13,7 @@ public enum RequestType: String {
     case post = "POST"
 }
 
+/// Protocol to perform the request.
 public protocol RequestPerforming: ResponseConfiguring & RequestConfiguring {
     func performRequest (completion: @escaping (Response<SuccessModel>) -> Void)
     var session: URLSession { get }

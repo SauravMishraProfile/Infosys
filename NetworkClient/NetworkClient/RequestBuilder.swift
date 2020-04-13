@@ -7,8 +7,10 @@
 
 import Foundation
 
+/// Protocol to build a request for service call
 protocol RequestBuilder: URLEncoder & JSONEncoder { }
 
+/// Encode and generate an URL
 protocol URLEncoder {
     static func makeURL(for configuration: RequestConfiguring) -> URL
 }
@@ -43,6 +45,7 @@ extension URLEncoder {
     }
 }
 
+/// Protocol to generate encoded Data
 protocol JSONEncoder {
     static func make(for configuration: RequestConfiguring) -> Data?
 }
@@ -62,4 +65,5 @@ extension JSONEncoder {
     }
 }
 
+/// Concrete type to build a request
 struct DefaultRequestBuilder: RequestBuilder { }

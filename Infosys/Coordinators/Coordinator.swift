@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A coordinator which controls the flows in the app. It has a start() method to initate the flow and can have other methods like next() or stop() to carry further operations adn supply dependencies. It has a`router` object which can helps in managing the navigation stack.
 protocol Coordinator: AnyObject {
 
     func start()

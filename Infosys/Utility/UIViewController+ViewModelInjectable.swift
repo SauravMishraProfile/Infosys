@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A protocol to be implemented by UIVIewControllers which mandates that they should have a viewModel and a coordinator attached to them.
 protocol ViewModelInjectable where Self: UIViewController {
 
     associatedtype DependencyType
