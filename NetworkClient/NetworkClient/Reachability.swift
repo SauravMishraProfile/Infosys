@@ -8,7 +8,7 @@
 import SystemConfiguration
 
 /// Class to check if network is reachable or not.
-final class Reachability {
+final class Reachability: Reachable {
 
     static func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
@@ -30,4 +30,8 @@ final class Reachability {
        return (isReachable && !needsConnection)
     }
 
+}
+
+protocol Reachable: AnyObject {
+    static func isInternetAvailable() -> Bool
 }

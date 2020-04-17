@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15123EC524496C46003D5A3B /* URLSession+DataTaskPerforming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15123EC424496C46003D5A3B /* URLSession+DataTaskPerforming.swift */; };
 		1515B5D92441FA100093D90B /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5D82441FA100093D90B /* RequestBuilderTests.swift */; };
 		1515B5DD24420D9A0093D90B /* ResponseGeneratingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5DC24420D9A0093D90B /* ResponseGeneratingTests.swift */; };
 		1515B5DF244215BD0093D90B /* RequestPerformingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515B5DE244215BD0093D90B /* RequestPerformingTests.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15123EC424496C46003D5A3B /* URLSession+DataTaskPerforming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+DataTaskPerforming.swift"; sourceTree = "<group>"; };
 		1515B5D82441FA100093D90B /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
 		1515B5DA2441FDD40093D90B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1515B5DC24420D9A0093D90B /* ResponseGeneratingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGeneratingTests.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				19D5020D2223EED000ED1F42 /* NetworkClient.h */,
 				19D5020E2223EED000ED1F42 /* Info.plist */,
 				1515B5F72443673A0093D90B /* Reachability.swift */,
+				15123EC424496C46003D5A3B /* URLSession+DataTaskPerforming.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				1515B5F82443673A0093D90B /* Reachability.swift in Sources */,
 				19D5022F2223EF4E00ED1F42 /* ResponseGenerating.swift in Sources */,
 				19D5022D2223EF4E00ED1F42 /* RequestConfiguring.swift in Sources */,
+				15123EC524496C46003D5A3B /* URLSession+DataTaskPerforming.swift in Sources */,
 				19D5022E2223EF4E00ED1F42 /* ResponseConfiguring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

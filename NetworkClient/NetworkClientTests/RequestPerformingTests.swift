@@ -18,26 +18,39 @@ final class RequestPerformingTests: XCTestCase {
 
     func testPerformRequestSuccess() {
         let requestPerforming = MockRequestPerforming()
-        requestPerforming.response = Response.success(MockSuccessCodable(identifier: "12", name: "Name"))
+        guard let session = requestPerforming.session as? MockURLSession else {
+            XCTFail("Mock session is not used")
+            return
+        }
+        let responseJSON = """
+        { "identifier":"13", "name":"Jack & Jill" }
+        """.utf8
+        session.data = Data(responseJSON)
+        session.response = HTTPURLResponse(url: URL(string: "http://mock.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
         requestPerforming.performRequest { response in
             switch response {
             case .failure:
                 XCTFail("Should not hit failure")
             case .success(let success):
-                XCTAssertEqual(success.identifier, "12")
-                XCTAssertEqual(success.name, "Name")
+                XCTAssertEqual(success.identifier, "13")
+                XCTAssertEqual(success.name, "Jack & Jill")
             }
         }
     }
 
     func testPerformRequestFailure() {
         let requestPerforming = MockRequestPerforming()
-        requestPerforming.response = Response.failure(MockErrorCodable(code: "13"))
+        guard let session = requestPerforming.session as? MockURLSession else {
+            XCTFail("Mock session is not used")
+            return
+        }
+        session.error = DefaultError()
         requestPerforming.performRequest { response in
             switch response {
             case .failure(let error):
-                let error = error as? MockErrorCodable
-                XCTAssertEqual(error?.code, "13")
+                let error = error as? DefaultErrorModel
+                XCTAssertEqual(error?.description, "Error Returned")
+                XCTAssertEqual(error?.errorCode, 0)
             case .success:
                 XCTFail("Should not hit failure")
             }
@@ -65,8 +78,29 @@ private final class MockRequestPerforming: RequestPerforming {
         return "/uri"
     }
 
-    var response: Response<MockSuccessCodable>?
-    func performRequest(completion: @escaping (Response<MockSuccessCodable>) -> Void) {
-        completion(response!)
+    let session: URLSessionProtocol
+    init(session: URLSessionProtocol = MockURLSession()) {
+        self.session = session
+    }
+
+}
+
+private final class MockURLSession: URLSessionProtocol {
+    var data: Data?
+    var response: URLResponse?
+    var error: Error?
+    private(set) var dataTask = MockDataTask()
+
+    func makeDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        completionHandler(data, response, error)
+        return dataTask
+    }
+}
+
+private final class MockDataTask: URLSessionDataTaskProtocol {
+
+    private(set) var resumeCalledCount: Int = 0
+    func resume() {
+        resumeCalledCount += 1
     }
 }

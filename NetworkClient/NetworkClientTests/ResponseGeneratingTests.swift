@@ -102,14 +102,13 @@ final class ResponseGeneratingTests: XCTestCase {
 
         let httpResponse = HTTPURLResponse(url: URL(string: "http://mock.com")!, statusCode: 404, httpVersion: nil, headerFields: nil)
         let responseGenerator = ResponseGenerator()
-        let response = responseGenerator.decode(successDecodingType: MockSuccessCodable.self, errorDecodingType: MockErrorCodable.self, data: Data(responseJSON), response: httpResponse, error: DefaultError())
+        let response = responseGenerator.decode(successDecodingType: MockSuccessCodable.self, errorDecodingType: MockErrorCodable.self, data: Data(responseJSON), response: httpResponse, error: nil)
 
         switch response {
         case .failure(let error):
-            let generatedError = error as? DefaultErrorModel
+            let generatedError = error as? MockErrorCodable
             XCTAssertNotNil(generatedError)
-            XCTAssertEqual(generatedError?.errorCode, 0)
-            XCTAssertEqual(generatedError?.description, "Error Returned")
+            XCTAssertEqual(generatedError?.code, "13")
         case .success:
             XCTFail("Not Supposed to hit Success")
         }
@@ -137,6 +136,49 @@ final class ResponseGeneratingTests: XCTestCase {
         }
     }
 
+    func testResponseGeneratingWronglyEncodedResponseRecieved() {
+
+        let mockSuccessCodable = MockResponseObject()
+        mockSuccessCodable.name = "Name"
+        let data = NSKeyedArchiver.archivedData(withRootObject: mockSuccessCodable)
+         let httpResponse = HTTPURLResponse(url: URL(string: "http://mock.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let responseGenerator = ResponseGenerator()
+        let response = responseGenerator.decode(successDecodingType: MockSuccessCodable.self, errorDecodingType: MockErrorCodable.self, data: data, response: httpResponse, error: nil)
+
+        switch response {
+        case .failure(let error):
+            let generatedError = error as? DefaultErrorModel
+            XCTAssertNotNil(generatedError)
+            XCTAssertEqual(generatedError?.errorCode, 0)
+            XCTAssertEqual(generatedError?.type, .invalidData)
+            XCTAssertEqual(generatedError?.description, "could not convert data to UTF-8 format")
+        case .success:
+            XCTFail("Not Supposed to hit Success")
+        }
+    }
+
+    func testResponseGeneratingInternetReachableFalse() {
+
+        let responseJSON = """
+                            { "identifier":"13", "name":"Jack & Jill" }
+                            """.utf8
+
+        let httpResponse = HTTPURLResponse(url: URL(string: "http://mock.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let responseGenerator = ResponseGenerator(isInternetReachable: false)
+        let response = responseGenerator.decode(successDecodingType: MockSuccessCodable.self, errorDecodingType: MockErrorCodable.self, data: Data(responseJSON), response: httpResponse, error: nil)
+
+        switch response {
+        case .failure(let error):
+            let generatedError = error as? DefaultErrorModel
+            XCTAssertNotNil(generatedError)
+            XCTAssertEqual(generatedError?.errorCode, 0)
+            XCTAssertEqual(generatedError?.type, .noInternet)
+            XCTAssertEqual(generatedError?.description, "Error Returned")
+        case .success:
+            XCTFail("Not Supposed to hit Success")
+        }
+    }
+
 }
 
 struct MockSuccessCodable: Codable {
@@ -149,3 +191,20 @@ struct MockErrorCodable: Codable {
 }
 
 struct DefaultError: Error { }
+
+@objc(MockResponseObject)
+private class MockResponseObject: NSObject, NSCoding {
+
+   var name: String?
+   override init() { }
+
+   func encode(with aCoder: NSCoder) {
+       aCoder.encode(self.name, forKey: "name")
+   }
+
+   required init(coder decoder: NSCoder) {
+       if let name = decoder.decodeObject(forKey: "name") as? String {
+            self.name = name
+       }
+   }
+}

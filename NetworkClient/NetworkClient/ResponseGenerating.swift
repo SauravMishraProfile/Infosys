@@ -12,6 +12,7 @@ protocol ResponseGenerating {
     var decoder: JSONDecoder { get }
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
     var encodingStrategy: String.Encoding { get }
+    var isReachable: Bool { get }
     func decode<T: Codable, U: Codable>(successDecodingType: T.Type, errorDecodingType: U.Type, data: Data?, response: URLResponse?, error: Error?) -> Response<T>
 }
 
@@ -37,7 +38,7 @@ extension ResponseGenerating {
                 return .failure(errorModel)
         }
 
-        guard Reachability.isInternetAvailable() else {
+        guard isReachable else {
             let errorModel = DefaultErrorModel(type: .noInternet, errorCode: 0, description: "Error Returned")
             return .failure(errorModel)
         }
@@ -55,8 +56,7 @@ extension ResponseGenerating {
              }
             let response = try self.decoder.decode(successDecodingType, from: modifiedDataInUTF8Format)
             return .success(response)
-        } catch let error {
-            print(error)
+        } catch {
             return self.makeFailureResponse(responseData: responseData, errorDecodingType: errorDecodingType)
         }
     }
@@ -74,7 +74,10 @@ extension ResponseGenerating {
 
 struct ResponseGenerator: ResponseGenerating {
     let encodingStrategy: String.Encoding
-    init(encodingStrategy: String.Encoding = .utf8) {
+    let isReachable: Bool
+
+    init(encodingStrategy: String.Encoding = .utf8, isInternetReachable: Bool = Reachability.isInternetAvailable()) {
         self.encodingStrategy = encodingStrategy
+        self.isReachable = isInternetReachable
     }
 }

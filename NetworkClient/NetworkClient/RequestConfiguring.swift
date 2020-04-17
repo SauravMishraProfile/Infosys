@@ -30,5 +30,4 @@ public extension EndPoint {
     var endPoint: URL {
         return URL(string: self.scheme + "://" + self.host + self.uri)!
     }
-
 }

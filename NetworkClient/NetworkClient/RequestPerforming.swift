@@ -16,12 +16,11 @@ public enum RequestType: String {
 /// Protocol to perform the request.
 public protocol RequestPerforming: ResponseConfiguring & RequestConfiguring {
     func performRequest (completion: @escaping (Response<SuccessModel>) -> Void)
-    var session: URLSession { get }
 }
 
 extension RequestPerforming {
 
-    public var session: URLSession {
+    var session: URLSession {
         return .shared
     }
 
@@ -31,7 +30,7 @@ extension RequestPerforming {
         networkRequest.httpMethod = self.type.rawValue
         networkRequest.httpBody = DefaultRequestBuilder.make(for: self)
 
-        let task = session.dataTask(with: networkRequest, completionHandler: { (data, response, error) in
+        let task = session.makeDataTask(with: networkRequest, completionHandler: { (data, response, error) in
             let responseGenerator = ResponseGenerator(encodingStrategy: self.encodingStrategy)
             let response = responseGenerator.decode(successDecodingType: SuccessModel.self, errorDecodingType: ErrorModel.self, data: data, response: response, error: error)
             completion(response)
