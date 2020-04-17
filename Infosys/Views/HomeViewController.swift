@@ -136,9 +136,11 @@ extension HomeViewController: HomeServiceDelegate {
     }
 
     func didStartLoading(_ viewModel: HomeViewModel) {
-        DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-            self.tableView.isHidden = true
+        if refreshControl.isRefreshing == false {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+                self.tableView.isHidden = true
+            }
         }
     }
 }
